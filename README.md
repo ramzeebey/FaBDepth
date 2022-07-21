@@ -12,7 +12,7 @@
 Dependencies:
 
 Software:
-Python 3.8 onwards
+Python 3.8 onwards,
 Libraries : Pytorch, Open CV, Matplotlib, Numpy, 
 
 Hardware:
