@@ -16,5 +16,5 @@ Python 3.8 onwards
 Libraries : Pytorch, Open CV, Matplotlib, Numpy, 
 
 Hardware:
-RAM : 4GB onwards/n
+RAM : 4GB onwards,
 GPU : Highly recommended (Can work with CPU as well)
