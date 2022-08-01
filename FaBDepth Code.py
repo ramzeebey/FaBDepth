@@ -29,46 +29,34 @@ def rescaleFrame(frame, scale=0.75):
 
 
 def capture_frames(video=False):
-    """Function to resize frames.
+    cap = cv2.VideoCapture(0)
+       
+    # Read until video is completed
+    while(cap.isOpened()):
+        # Capture frame-by-frame
+        ret, frame = cap.read()
+        if ret == True:
+   
+            # Display the resulting frame
+            cv2.imshow('Frame', frame)
+   
+            name = f'frame{i}.jpg'
 
-    Attributes:
-        video (str): video file can be passed or by default
-        live video can be captured.
-    """
-    if video:
-        capture = cv2.VideoCapture(video)
-    else:  # live video
-        capture = cv2.VideoCapture(0)
-
-    i = 0  # counting frames
-
-    while True:
-        # capture frame-by-frame
-        ret, frame = capture.read()
-
-        # display live video
-        cv2.imshow('video', frame)
-
-        name = f'frame{i}.jpg'
-
-        # save original frames
+            # save original frames
         
 
-        # resize and save
-        resized_frame = rescaleFrame(frame)
-        cv2.imwrite(os.path.join(resized, name), resized_frame)
+            # resize and save
+            resized_frame = rescaleFrame(frame)
+            cv2.imwrite(os.path.join(resized, name), resized_frame)
 
-        i += 1  # incrementing count
+            i += 1  # incrementing count
 
-        # video will run infinitely till 'q' is pressed on keyboard
-        if cv2.waitKey(1) & 0xFF == ord('q'):
-            break
-
-    # release the capture and closing the video window after end
-    capture.release()
+            # video will run infinitely till                'q'            is pressed on keyboard
+            if cv2.waitKey(1) & 0xFF == ord('q'):
+               break
+    cap.release()
     cv2.destroyAllWindows()
-
-
+   
 def decode_segmap(image, source, nc=21):
     # Apply the transformations needed
     # Define the helper function
